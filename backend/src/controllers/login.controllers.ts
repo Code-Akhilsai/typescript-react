@@ -23,15 +23,24 @@ const loginController = async (req:Request, res:Response)=>{
 
         if (password !== user.password) return res.status(401).json({message:"Invalid credentionals"});
 
-        //token
+     //tokens
 
         const secreate_key :string | undefined = process.env.SECREATE_KEY 
 
         if(!secreate_key) return console.log("internal error")
+               //Accesstoken
 
-        const token = jwt.sign({_id:user._id,email:user.email},secreate_key ,{expiresIn:'1d'});
+        const access_token = jwt.sign({_id:user._id,email:user.email},secreate_key ,{expiresIn:'1h'});
 
-        return res.status(200).cookie("Token",token).json({message:"Login successfull"})
+
+        //refreshtoken
+
+        const refresh_token = jwt.sign({_id:user._id,email:user.email},secreate_key ,{expiresIn:'1d'});
+
+        res.status(200).cookie("Token",refresh_token)
+        
+        
+        return res.json({message:"Login successfull",access_token})
 
         
 

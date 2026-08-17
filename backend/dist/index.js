@@ -1,9 +1,17 @@
 import express from "express";
 import cors from "cors";
-import router from "./routes/test.routes.js";
+import dotenv from "dotenv";
+import connectDB from "./db/connectDB.js";
+import register_Router from "./routes/register.routes.js";
+import login_Router from "./routes/login.routes.js";
+dotenv.config();
+const port = process.env.PORT;
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use("/api", router);
-app.listen(3000, () => console.log("https://localhost:3000"));
+await connectDB();
+//routes
+app.use("/api", register_Router);
+app.use("/api/", login_Router);
+app.listen(port, () => console.log("servering running on port 3000"));
 //# sourceMappingURL=index.js.map

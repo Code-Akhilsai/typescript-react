@@ -30,7 +30,7 @@ const loginController = async (req:Request, res:Response)=>{
         if(!secreate_key) return console.log("internal error")
                //Accesstoken
 
-        const access_token = jwt.sign({_id:user._id,email:user.email},secreate_key ,{expiresIn:'1hr'});
+        const access_token = jwt.sign({_id:user._id,email:user.email},secreate_key ,{expiresIn:'7d'});
 
       
 

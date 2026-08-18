@@ -1,22 +1,34 @@
 import { useState } from "react";
-
-type User_details = {
-  name: string,
-  age: number
-}
+import axios from"axios";
+import {useNavigate} from "react-router-dom"
 
 const Home = () => {
-  const [text, setText] = useState([]);
+
+const [email,setEmail]=useState<string>("");
+const [password,setPassword]=useState<string>("");
+const nav = useNavigate()
 
 
+const handleLogin = async()=>{
+  const response:any= await axios.post("http://localhost:3000/api/login",{email,password});
 
+  if(response.status!==200){ 
+   
+    
+    return alert("Error")
+  
+  }
 
-
+    console.log(response)
+ nav("/profile")
+  
+}
+ 
 
   return <div>
-    <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
-
-    <h1>response:{text}</h1>
+    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+  <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+  <button onClick={handleLogin}>login</button>
   </div>
 }
 

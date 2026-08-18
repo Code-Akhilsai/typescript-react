@@ -35,12 +35,12 @@ const loginController = async (req:Request, res:Response)=>{
 
         //refreshtoken
 
-        const refresh_token = jwt.sign({_id:user._id,email:user.email},secreate_key ,{expiresIn:'1d'});
+     //   const refresh_token = jwt.sign({_id:user._id,email:user.email},secreate_key ,{expiresIn:'1d'});
 
-        res.status(200).cookie("Token",refresh_token)
+       // res.status(200).cookie("Token",refresh_token)
         
         
-        return res.json({message:"Login successfull",access_token})
+        return res.status(200).cookie('Token',access_token).json({message:"Login successfull"})
 
         
 

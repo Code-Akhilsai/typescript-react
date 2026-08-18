@@ -9,7 +9,7 @@ const middleware = async(req:Request,res : Response,next:any)=>{
 
     try{
 
-     const access_token = req.cookies?.body;
+     const access_token = req.cookies?.Token;
 
      if(!access_token) return res.status(403).json({message:"User unauthorized"});
 

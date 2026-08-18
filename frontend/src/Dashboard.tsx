@@ -4,8 +4,8 @@ const Dashboard = ()=>{
 
 const nav = useNavigate()
 
-    async function handleProfile (){
-        const response:any= await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/profile`,
+    const handleProfile = async ()=>{
+        const response:any= await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/profile`,null,
      {
     withCredentials: true
   }

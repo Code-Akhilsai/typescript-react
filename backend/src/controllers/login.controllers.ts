@@ -42,7 +42,7 @@ const loginController = async (req:Request, res:Response)=>{
        // res.status(200).cookie("Token",refresh_token)
         
         
-        return res.status(200).cookie('Token',access_token,{httpOnly:true,secure:true,sameSite:"none"}).json({message:"Login successfull"})
+        return res.status(200).cookie('Token',access_token,{httpOnly:true,secure:true,sameSite:"lax"}).json({message:"Login successfull"})
 
         
 

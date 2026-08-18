@@ -24,7 +24,7 @@ await connectDB();
 //routes
 
 app.use("/api",register_Router);
-app.use("/api/",login_Router)
+app.use("/api",login_Router)
 app.use("/api",profile_Router)
 
 app.listen(port , ():void=>console.log("servering running on port 3000"))

@@ -30,7 +30,9 @@ const loginController = async (req:Request, res:Response)=>{
         if(!secreate_key) return console.log("internal error")
                //Accesstoken
 
-        const access_token = jwt.sign({_id:user._id,email:user.email},secreate_key ,{expiresIn:'1h'});
+        const access_token = jwt.sign({_id:user._id,email:user.email},secreate_key ,{expiresIn:'15s'});
+
+      
 
 
         //refreshtoken
@@ -40,7 +42,7 @@ const loginController = async (req:Request, res:Response)=>{
        // res.status(200).cookie("Token",refresh_token)
         
         
-        return res.status(200).cookie('Token',access_token).json({message:"Login successfull"})
+        return res.status(200).cookie('Token',access_token,{httpOnly:true,secure:true,sameSite:"strict"}).json({message:"Login successfull"})
 
         
 

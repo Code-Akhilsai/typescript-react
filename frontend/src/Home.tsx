@@ -10,7 +10,11 @@ const nav = useNavigate()
 
 
 const handleLogin = async()=>{
-  const response:any= await axios.post("http://localhost:3000/api/login",{email,password});
+  const response:any= await axios.post("http://localhost:3000/api/login",{email,password},
+     {
+    withCredentials: true
+  }
+  );
 
   if(response.status!==200){ 
    

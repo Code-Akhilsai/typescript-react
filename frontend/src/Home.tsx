@@ -25,7 +25,7 @@ const handleLogin = async()=>{
   }
 
     console.log(response)
- nav("/profile")
+ nav("/dashboard")
   
 }
  

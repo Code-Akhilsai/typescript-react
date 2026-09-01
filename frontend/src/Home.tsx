@@ -8,13 +8,13 @@ const [email,setEmail]=useState<string>("");
 const [password,setPassword]=useState<string>("");
 const nav = useNavigate()
 
+const backend = import.meta.env.VITE_BACKEND_URL;
 
+console.log(backend)
 
 const handleLogin = async()=>{
   const response:any= await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`,{email,password},
-     {
-    withCredentials: true
-  }
+    
   );
 
   if(response.status!==200){ 
